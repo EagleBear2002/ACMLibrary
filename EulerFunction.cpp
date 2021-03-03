@@ -9,3 +9,14 @@ int Euler(int n) {
 	}
 	return ans;
 }
+
+//20.10.14
+int phi[MAXN];
+void EulerSieve(int n) {
+	phi[1] = 1;
+	for(int i = 2; i <= n; ++i) if(!phi[i])
+		for(int j = i; j <= n; j += i) {
+			if(!phi[j]) phi[j] = j;
+			phi[j] = phi[j] * (i-1) / i;
+		}
+}
